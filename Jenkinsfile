@@ -24,12 +24,12 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('sonarqube') {
+                 withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
                     sh """
                     mvn sonar:sonar \
                       -Dsonar.projectKey=jenkins_sonarqub \
                       -Dsonar.host.url=http://localhost:9000 \
-                      -Dsonar.login=${SONAR_AUTH_TOKEN}
+                      -Dsonar.login=${SONAR_TOKEN}
                     """
                 }
             }
