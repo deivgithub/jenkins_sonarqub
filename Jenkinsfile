@@ -12,7 +12,6 @@ pipeline {
 		    url: 'https://github.com/deivgithub/jenkins_sonarqub.git',
 		    branch: 'main',
 		    credentialsId: 'github-token',
-		    tool: 'Default'
 		)
             }
         }
