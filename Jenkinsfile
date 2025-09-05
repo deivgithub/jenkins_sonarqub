@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/TU-USUARIO/proyecto-ci-ejemplo.git'
+                git 'https://github.com/deivgithub/jenkins_sonarqub.git'
             }
         }
 
@@ -27,7 +27,7 @@ pipeline {
                 withSonarQubeEnv('sonarqube') {
                     sh """
                     mvn sonar:sonar \
-                      -Dsonar.projectKey=proyecto-ci-ejemplo \
+                      -Dsonar.projectKey=jenkins_sonarqub \
                       -Dsonar.host.url=http://sonarqube:9000 \
                       -Dsonar.login=${SONAR_AUTH_TOKEN}
                     """
