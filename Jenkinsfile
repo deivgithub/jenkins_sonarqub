@@ -8,7 +8,12 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/deivgithub/jenkins_sonarqub.git'
+		git(
+		    url: 'https://github.com/deivgithub/jenkins_sonarqub.git',
+		    branch: 'main',
+		    credentialsId: 'github-token',
+		    tool: 'Default'
+		)
             }
         }
 
