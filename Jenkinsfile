@@ -5,10 +5,6 @@ pipeline {
         jdk 'Temurin-17'
     }
 
-    environment {
-        SONAR_AUTH_TOKEN = credentials('sonar-token') // credencial en Jenkins
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -24,9 +20,9 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                 withSonarQubeEnv('sonarqube') {  // <-- este nombre es el del servidor configurado en Jenkins
-         	   sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins_sonarqub'
-        	}
+                withSonarQubeEnv('sonarqube') {
+                    sh 'mvn sonar:sonar -Dsonar.projectKey=jenkins_sonarqub'
+                }
             }
         }
 
